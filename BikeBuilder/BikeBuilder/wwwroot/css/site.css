@@ -1,18 +1,16 @@
-html {
-  font-size: 14px;
+/*@font-face {
+    font-family: Saira;
+    src: url('https://fonts.googleapis.com/css2?family=Saira:wght@100&display=swap');
+}*/
+
+/*body {
+    font-family: Saira;
+    background-color: #232323 !important;
+    color: white;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {
-  margin-bottom: 60px;
-}
+.navbar-brand {
+    position: absolute;
+    top: 0px;
+    left: 20px;
+}*/

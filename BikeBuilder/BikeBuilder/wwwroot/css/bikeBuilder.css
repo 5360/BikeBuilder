@@ -1,0 +1,125 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+/*@font-face {
+  font-family: Saira;
+  src: url('https://fonts.googleapis.com/css2?family=Saira:wght@100&display=swap');
+}*/
+
+body {
+	font-family: 'Saira';
+	background-color: #232323;
+	color: white;
+}
+
+a{
+	color: #006EF9;
+}
+.nav-tabs .nav-link{
+	background-color: #232323;
+	border: none;
+}
+.nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus{
+	background-color: #FFD31C;
+	color: #232323;
+}
+
+.navbar-brand{
+	position:absolute;
+	top:0px;
+	left:20px;
+}
+
+.part-card-container{
+	background-color: white;
+	padding:0px 5px;
+	margin:0px 5px;
+}
+
+.selected-part{
+	outline: 5px solid #FFD31C !important;
+	
+}
+
+.part-title{
+	color:#232323;
+	padding: 0px 5px;
+	margin-bottom: 5px;
+	font-weight: 500;
+}
+
+.price-lable{
+	margin:0px;
+	color:#232323;
+	text-align: right;
+	padding:0px 5px;
+}
+
+.card-selected{
+	position: absolute;
+	right: 10px;
+    top: 10px;
+}
+
+.order-now{
+	float:right;
+	border-radius: 0.25rem;
+	background-color: #FFD31C;
+	margin: 0px;
+	margin-right: -10px;
+}
+
+#myTab:last-child{
+	margin-right: 0px;
+}
+
+.nav-cotroller{
+	position: absolute;
+	right:5px;
+	top:10px;
+	z-index: 99999;
+}
+
+.form-select {
+	width: 93%;
+}
+
+.app-controls{
+	background-color:#3c3c3c; 
+	position: fixed;
+    right: 0;
+    height: 100%;
+	width:30%;
+}
+
+@media only screen and (max-width: 768px) {
+	.app-controls{
+	width:100%;
+	}
+}
+
+.nav-tabs{
+	border:none;
+}
+
+.model-vewer{
+	width:70%;
+	position: fixed;
+	z-index: -1;
+}
+
+.nav-tabs .nav-link{
+	border-radius: 0.25rem;
+	margin-right: 15px;
+}
+
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link{
+	background-color: #FFD31C;
+	border:none;
+}
+
+.bottom-cta{
+	background-color: #232323;
+	padding: 5px 10px;
+	margin: 15px 10px;
+}

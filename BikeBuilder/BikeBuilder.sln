@@ -3,7 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32526.322
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeBuilder", "BikeBuilder\BikeBuilder.csproj", "{2E0DED7B-8825-49C2-8A4C-1B8CEE6E2A66}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BikeBuilder", "BikeBuilder\BikeBuilder.csproj", "{2E0DED7B-8825-49C2-8A4C-1B8CEE6E2A66}"
+	ProjectSection(ProjectDependencies) = postProject
+		{888B0963-8D58-47CA-ACF3-B5AA36B38B5F} = {888B0963-8D58-47CA-ACF3-B5AA36B38B5F}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductsAPI.Data", "ProductsAPI.Data\ProductsAPI.Data.csproj", "{888B0963-8D58-47CA-ACF3-B5AA36B38B5F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +20,10 @@ Global
 		{2E0DED7B-8825-49C2-8A4C-1B8CEE6E2A66}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E0DED7B-8825-49C2-8A4C-1B8CEE6E2A66}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E0DED7B-8825-49C2-8A4C-1B8CEE6E2A66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{888B0963-8D58-47CA-ACF3-B5AA36B38B5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{888B0963-8D58-47CA-ACF3-B5AA36B38B5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{888B0963-8D58-47CA-ACF3-B5AA36B38B5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{888B0963-8D58-47CA-ACF3-B5AA36B38B5F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
