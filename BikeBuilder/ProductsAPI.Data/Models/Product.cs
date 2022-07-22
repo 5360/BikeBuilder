@@ -17,11 +17,9 @@ namespace ProductsAPI.Data.Models
         public string Name { get; set; }
         [Required]
         [MaxLength(2048)]
-        [DataType(DataType.ImageUrl)]
         public string Picture { get; set; }
         [Required]
         [MaxLength(2048)]
-        [DataType(DataType.Url)]
         public string AssetBundle { get; set; }
         [Required]
         [Precision(10,2)]

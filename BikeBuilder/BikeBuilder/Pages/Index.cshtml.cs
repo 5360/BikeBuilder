@@ -15,7 +15,7 @@ namespace BikeBuilder.Pages
         public List<Product> Frames { get; set; }
         public List<Product> Wheels { get; set; }
 
-        public Dictionary<string, List<string>> colors = new Dictionary<string, List<string>>();
+        public Dictionary<string, List<string>> colors = new();
 
         public IndexModel(ProductsDbContext context, IWebHostEnvironment webHostEnvironment)
         {
@@ -31,7 +31,7 @@ namespace BikeBuilder.Pages
             {
                 var bundleManifest = $"{Path.Combine(_webHostEnvironment.WebRootPath, "uploads", "Assets", product.AssetBundle.Split("/").Last())}.manifest";
                 string[] lines = System.IO.File.ReadAllLines(bundleManifest);
-                List<string> colorsInBundle = new List<string>();
+                List<string> colorsInBundle = new();
                 foreach (var line in lines)
                 {
                     if (line.StartsWith("- Assets/"))
@@ -47,7 +47,7 @@ namespace BikeBuilder.Pages
             Wheels = products.Where(p => p.ProductType == ProductType.Wheels).ToList();
         }
 
-        private string ParseColor(string line)
+        private static string ParseColor(string line)
         {
             var parts = line.Split('/');
 

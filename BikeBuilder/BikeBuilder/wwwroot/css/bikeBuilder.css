@@ -48,11 +48,18 @@ a{
 	font-weight: 500;
 }
 
-.price-lable{
-	margin:0px;
-	color:#232323;
+.price-label {
+	margin: 0px;
+	color: #232323;
 	text-align: right;
-	padding:0px 5px;
+	padding: 0px 10px 0 3px;
+}
+
+.price-prefix {
+	margin: 0px;
+	color: #232323;
+	text-align: right;
+	padding: 0px;
 }
 
 .card-selected{
@@ -122,4 +129,11 @@ a{
 	background-color: #232323;
 	padding: 5px 10px;
 	margin: 15px 10px;
+}
+
+#add-part {
+	position: absolute;
+	top: 20px;
+	left: 380px;
+	background-color: #3c3c3c;
 }

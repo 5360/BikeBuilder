@@ -1,14 +1,16 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using ProductsAPI.Data.Enum;
+using System.ComponentModel.DataAnnotations;
 
 namespace BikeBuilder.Models
 {
-    public class ProductViewModel
+    public class CreateProductViewModel
     {
-        public Guid PublicId { get; set; }
+        [Required]
+        public ProductType ProductType { get; set; }
+        [Required]
+        [MinLength(6)]
+        [MaxLength(30)]
         public string Name { get; set; }
-        public string Picture { get; set; }
-        public string AssetBundle { get; set; }
         public decimal Price { get; set; }
-        public int Quantity { get; set; }
     }
 }

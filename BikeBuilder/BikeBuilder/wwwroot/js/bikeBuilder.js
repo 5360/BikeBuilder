@@ -97,34 +97,48 @@ script.onload = () => {
 };
 document.body.appendChild(script);
 
-
-var frameName
-
-function viewFrame(name, color) {
-    //debugger;
-    bikeBuilderInstance.SendMessage("Bike", "ViewFrame", name + "/" + color);
-}
-
-function viewWheels(name) {
-    wheelsName = name;    
-    bikeBuilderInstance.SendMessage("Bike", "ViewWheels", name);
-}
-
-$('.card-list').on('click', '.part-card-container', function (e) {
-    console.log(e);
-    /*debugger;*/
+$('.card-list').on('click', '.frame-card', function (e) {
     if (!e.target.classList.contains('form-select') || e.target.disabled) {
-        $('.card-list .selected-part').removeClass('selected-part');
-        $('.part-card-container > .form-select').prop('disabled', true);
+        $('.frame-card.selected-part').removeClass('selected-part');
+        $('.frame-card > .form-select').prop('disabled', true);
         $('.form-select', this).prop('disabled', false);
         $(this).addClass('selected-part');
     }
+
+    setPrice();
 });
 
-$('.frame-card').on('click', function (e) {
-    //console.log(e);
-    //debugger;
+$('.card-list').on('click', '.wheels-card', function (e) {
+    if (!e.target.classList.contains('form-select') || e.target.disabled) {
+        $('.wheels-card.selected-part').removeClass('selected-part');
+        $('.wheels-card > .form-select').prop('disabled', true);
+        $('.form-select', this).prop('disabled', false);
+        $(this).addClass('selected-part');
+    }
 
+    setPrice();
+});
+
+function setPrice() {
+    var priceTotal= 0;
+    console.log(priceTotal);
+    $('.selected-part .price-label').each(function () {
+        var price = parseFloat($(this).text());
+        console.log(price);
+        priceTotal += price;
+    });
+    $('#price-total').text('$' + priceTotal.toFixed(2));
+}
+
+function viewFrame(name, color) {
+    bikeBuilderInstance.SendMessage("Bike", "ViewFrame", name + "/" + color);
+}
+
+function viewWheels(name, color) {
+    bikeBuilderInstance.SendMessage("Bike", "ViewWheels", name + "/" + color);
+}
+
+$('.frame-card').on('click', function (e) {
     if (e.target.classList.contains('form-select') && !e.target.disabled) {
         return;
     }
@@ -137,8 +151,6 @@ $('.frame-card').on('click', function (e) {
 });
 
 $('.wheels-card').on('click', function (e) {
-    //console.log(e);
-    //debugger;
 
     if (e.target.classList.contains('form-select') && !e.target.disabled) {
         return;
@@ -152,13 +164,11 @@ $('.wheels-card').on('click', function (e) {
 });
 
 $('.frame-card > .color-select').change(function () {
-    //debugger;
     var frame = $(this).parents('.frame-card').attr("id");
     viewFrame(frame, $(this).val() )
 });
 
 $('.wheels-card > .color-select').change(function () {
-    //debugger;
     var wheels = $(this).parents('.wheels-card').attr("id");
     viewWheels(wheels, $(this).val())
 });

@@ -5,7 +5,7 @@
     ViewData["Title"] = "Products";
 }
 
-<h1>Index</h1>
+<h1>Manage Parts</h1>
 
 <p>
     <a asp-page="Create">Create New</a>
@@ -14,9 +14,6 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Products[0].PublicId)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Products[0].ProductType)
             </th>
             <th>
@@ -24,9 +21,6 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Products[0].Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Products[0].Quantity)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Products[0].Picture)
@@ -42,9 +36,6 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => product.PublicId)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => product.ProductType)
                 </td>
                 <td>
@@ -54,17 +45,14 @@
                     @Html.DisplayFor(modelItem => product.Price)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => product.Quantity)
+                    <img src="~/uploads/Images/@product.Picture" />
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => product.Picture)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => product.AssetBundle)
+                    <a href="~/uploads/Assets/@product.AssetBundle">@product.AssetBundle</a>
                 </td>
                 <td>
                     <a asp-page="./Edit" asp-route-id="@product.PublicId">Edit</a> |
-                    <a  asp-page-handler="delete" asp-route-id="@product.PublicId">Delete</a> 
+                    <a asp-page-handler="delete" asp-route-id="@product.PublicId">Delete</a>
                 </td>
             </tr>
         }

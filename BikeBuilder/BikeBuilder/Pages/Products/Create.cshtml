@@ -12,45 +12,39 @@
 <hr />
 
 <div class="container justify-content-center">
-    <form class="col-lg-6 m-auto" method="post" >
+    <form class="col-lg-6 m-auto" method="post" enctype="multipart/form-data">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
         <div class="row mb-1">
-            <label asp-for="Product.ProductType" class="col-2"></label>
-                <select asp-for="Product.ProductType" asp-items="Html.GetEnumSelectList<ProductType>()" class="form-control col-9">
+            <label asp-for="ProductVM.ProductType" class="col-2"></label>
+                <select asp-for="ProductVM.ProductType" asp-items="Html.GetEnumSelectList<ProductType>()" class="form-control col-9">
                     <option>Select type</option>
                 </select>
-                <span asp-validation-for="Product.ProductType" class="text-danger"></span>
+                <span asp-validation-for="ProductVM.ProductType" class="text-danger"></span>
         </div>
 
         <div class="row mb-1">
-            <label asp-for="Product.Name" class="col-2"></label>
-            <input asp-for="Product.Name" class="form-control col-9" />
-            <span asp-validation-for="Product.Name" class="text-danger"></span>
+            <label asp-for="ProductVM.Name" class="col-2"></label>
+            <input asp-for="ProductVM.Name" class="form-control col-9" />
+            <span asp-validation-for="ProductVM.Name" class="text-danger"></span>
         </div>
 
         <div class="row mb-1">
-            <label asp-for="Product.Price" class="col-2"></label>
-            <input type="number" min="0.00" max="10000.00" step="0.01" asp-for="Product.Price" class="form-control col-9" />
-            <span asp-validation-for="Product.Price" class="text-danger"></span>
-        </div>
-
-        <div class="rpw mb-1">
-            <label asp-for="Product.Quantity" class="col-2"></label>
-            <input type="number" min="0" step="1" asp-for="Product.Quantity" class="form-control col-9" />
-            <span asp-validation-for="Product.Quantity" class="text-danger"></span>
+            <label asp-for="ProductVM.Price" class="col-2"></label>
+            <input type="number" min="0.00" max="10000.00" step="0.01" asp-for="ProductVM.Price" class="form-control col-9" />
+            <span asp-validation-for="ProductVM.Price" class="text-danger"></span>
         </div>
 
         <div class="row mb-1">
-            <label asp-for="Product.Picture" class="col-2"></label>
+            <label class="col-2">Picture</label>
             <input type="file" accept="image/*" asp-for="Image" required class="form-control col-9" />
             <span asp-validation-for="Image" class="text-danger"></span>
         </div>
 
         <div class="row mb-1">
-            <label asp-for="Product.AssetBundle" class="col-2"></label>
-            <input asp-for="AssetBundlde" required class="form-control col-9" />
-            <span asp-validation-for="AssetBundlde" class="text-danger"></span>
+            <label class="col-2">Asset Bundle</label>
+            <input type="file" asp-for="AssetBundle" required class="form-control col-9" multiple/>
+            <span asp-validation-for="AssetBundle" class="text-danger"></span>
         </div>
 
         <div class="form-group">

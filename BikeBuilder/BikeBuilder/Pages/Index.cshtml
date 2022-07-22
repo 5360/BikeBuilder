@@ -8,85 +8,104 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Unity WebGL Player | BikeBuilder</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <style>
+        @@font-face {
+            font-family: Saira;
+            src: url('https://fonts.googleapis.com/css2?family=Saira:wght@100&display=swap');
+        }
+    </style>
+
+    
 </head>
-
-<div class="">
-    <button class="nav-cotroller d-block d-md-none btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"> View your build</button>
-    <div id="unity-container" class="model-vewer">
-        <canvas id="unity-canvas"></canvas>
-        <div id="unity-loading-bar">
-            <div id="unity-logo"></div>
-            <div id="unity-progress-bar-empty">
-                <div id="unity-progress-bar-full"></div>
+<body>
+    <div class="">
+        <a class="navbar-brand" asp-area="" asp-page="/Index">
+            <img alt="" src="~/Group 1970.svg">
+        </a>
+        <a class="btn btn-link" id="add-part" href="~/Products/Index">Manage parts</a>
+        <button class="nav-cotroller d-block d-md-none btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"> View your build</button>
+        <div id="unity-container" class="model-vewer">
+            <canvas id="unity-canvas"></canvas>
+            <div id="unity-loading-bar">
+                <div id="unity-logo"></div>
+                <div id="unity-progress-bar-empty">
+                    <div id="unity-progress-bar-full"></div>
+                </div>
+            </div>
+            <div id="unity-warning"> </div>
+            <div id="unity-footer">
+                <div id="unity-webgl-logo"></div>
+                <div id="unity-fullscreen-button"></div>
+                <div id="unity-build-title">BikeBuilder</div>
             </div>
         </div>
-        <div id="unity-warning"> </div>
-        <div id="unity-footer">
-            <div id="unity-webgl-logo"></div>
-            <div id="unity-fullscreen-button"></div>
-            <div id="unity-build-title">BikeBuilder</div>
+
+        <div class="collapse show" id="collapseExample">
+            <div class="app-controls py-2">
+                <ul class="nav nav-tabs justify-content-end" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation"> <a class="nav-link active" id="frame-tab" data-bs-toggle="tab" data-bs-target="#frame" href="#frame" role="tab" aria-controls="frame" aria-selected="true">Frame</a> </li>
+                    <li class="nav-item" role="presentation"> <a class="nav-link" id="wheels-tab" data-bs-toggle="tab" data-bs-target="#wheels" href="#wheels" role="tab" aria-controls="wheels" aria-selected="true">Wheels</a> </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane show active" id="frame" role="tabpanel" aria-labelledby="frame-tab">
+                        <div class="d-flex justify-content-around m-0 p-0 mt-3 card-list">
+                            @foreach (var frame in Model.Frames)
+                            {
+                                <div id="@frame.AssetBundle" class="col-lg-5 p-0 m-0 part-card-container frame-card">
+                                    <img alt="" class="part-image" src="~/uploads/Images/@frame.Picture" width="100%">
+                                    <p class="part-title">@frame.Name</p>
+                                    <select class="form-select color-select mb-3 mx-2" disabled>
+                                        @foreach (var color in Model.colors[frame.Name])
+                                        {
+                                            <option value="@color">@color</option>
+                                        }
+                                    </select>
+                                    <div class=" d-flex justify-content-end">
+                                        <span class="price-prefix">$</span>
+                                        <span class="price-label">@frame.Price</span>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="wheels" role="tabpanel" aria-labelledby="wheels-tab">
+                        <div class="d-flex justify-content-around m-0 p-0 mt-3 card-list">
+                            @foreach (var wheels in Model.Wheels)
+                            {
+                                <div id="@wheels.AssetBundle" class="col-lg-5 p-0 m-0 part-card-container wheels-card">
+                                    <img alt="" class="part-image" src="~/uploads/Images/@wheels.Picture" width="100%">
+                                    <p class="part-title">@wheels.Name</p>
+                                    <select class="form-select color-select mb-3 mx-2" disabled>
+                                        @foreach (var color in Model.colors[wheels.Name])
+                                        {
+                                            <option value="@color">@color</option>
+                                        }
+                                    </select>
+                                    <div class=" d-flex justify-content-end">
+                                        <span class="price-prefix">$</span>
+                                        <span class="price-label">@wheels.Price</span>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom-cta">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <h1 class="m-0">Total:</h1>
+                        </div>
+                        <div>
+                            <h1 id="price-total" class="m-0">$0.00</h1>
+                        </div>
+                    </div>
+                    <button class="order-now nav-link mt-3">Order now</button>
+                </div>
+            </div>
         </div>
     </div>
-
-    <div class="collapse show" id="collapseExample">
-        <div class="app-controls py-2">
-            <ul class="nav nav-tabs justify-content-end" id="myTab" role="tablist">
-                <li class="nav-item" role="presentation"> <a class="nav-link active" id="frame-tab" data-toggle="tab" href="#frame" role="tab" aria-controls="frame" aria-selected="true">Frame</a> </li>
-                <li class="nav-item" role="presentation"> <a class="nav-link" id="wheels-tab" data-toggle="tab" href="#wheels" role="tab" aria-controls="wheels" aria-selected="false">Wheels</a> </li>
-            </ul>
-            <div class="tab-content" id="myTabContent">
-                <div class="tab-pane show active" id="frame" role="tabpanel" aria-labelledby="frame-tab">
-                    <div class="d-flex justify-content-around m-0 p-0 mt-3 card-list">
-                        @foreach (var frame in Model.Frames)
-                        {
-                            <div id="@frame.AssetBundle" class="col-lg-5 p-0 m-0 part-card-container frame-card">
-                                <img alt="" class="part-image" src="@frame.Picture" width="100%">
-                                <p class="part-title">@frame.Name</p>
-                                <select class="form-select color-select mb-3 mx-2" disabled>
-                                    @foreach (var color in Model.colors[frame.Name])
-                                    {
-                                        <option value="@color">@color</option>
-                                    }
-                                </select>
-                                <p class="price-lable">$@frame.Price</p>
-                            </div>
-                        }
-                    </div>
-                </div>
-                <div class="tab-pane" id="wheels" role="tabpanel" aria-labelledby="wheels-tab">
-                    <div class="d-flex m-0 p-0 mt-3 card-list">
-                        @foreach (var wheels in Model.Wheels)
-                        { //TODO: selected-part default, Colors
-                            <div id="@wheels.AssetBundle" class="col-lg-5 p-0 m-0 part-card-container wheels-card">
-                                <img alt="" class="part-image" src="@wheels.Picture" width="100%">
-                                <p class="part-title">@wheels.Name</p>
-                                <select class="form-select color-select mb-3 mx-2" disabled>
-                                    @foreach (var color in Model.colors[wheels.Name])
-                                    {
-                                        <option value="@color">@color</option>
-                                    }
-                                </select>
-                                <p class="price-lable">$@wheels.Price</p>
-                            </div>
-                        }
-                    </div>
-                </div>
-            </div>
-            <div class="bottom-cta">
-                <div class="d-flex justify-content-between">
-                    <div>
-                        <h1 class="m-0">Total:</h1>
-                    </div>
-                    <div>
-                        <h1 class="m-0">99.99$</h1>
-                    </div>
-                </div>
-                <button class="order-now nav-link mt-3">Order now</button>
-            </div>
-        </div>
-    </div>
-</div>
+</body>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="~/lib/popper.js/umd/popper.min.js"></script>
+@*<script src="~/lib/popper.js/umd/popper.min.js"></script>*@
 <script src="~/js/bikeBuilder.js"></script>
